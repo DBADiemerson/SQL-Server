@@ -1,0 +1,9 @@
+if not exists (select 1 from sys.certificates where [name] = 'cert_sp_whoisactive')
+	create certificate cert_sp_whoisactive encryption by password = 'hzI77nQx27Hp6GxdTgy7'  with subject = 'Certificado para execução da whoisactive com mínimas permissões';
+
+if not exists (select 1 from sys.syslogins where [name] = 'login_cert_sp_whoisactive')
+	create login login_cert_sp_whoisactive from certificate cert_sp_whoisactive
+
+grant view server state to login_cert_sp_whoisactive
+
+add signature to sp_whoisactive by certificate cert_sp_whoisactive with password =  'hzI77nQx27Hp6GxdTgy7' 

@@ -35,5 +35,4 @@ from sys.dm_exec_requests req
 	cross apply sys.dm_exec_input_buffer(req.session_id,null) bff
 where req.session_id <> @@spid--= 142
 	and ses.is_user_process = 1
-	--and object_name(txt.[objectid],txt.[dbid]) = 'sp_relatorio_vendas'
 order by req.cpu_time desc

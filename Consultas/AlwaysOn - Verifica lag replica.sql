@@ -3,8 +3,8 @@ select
 	,ar.replica_server_name
     ,hdr.synchronization_state_desc
     ,hdr.synchronization_health_desc
-	,hdr.redo_queue_size
-	,hdr.redo_rate
+	,hdr.redo_queue_size [redo_queue_size KB]
+	,hdr.redo_rate [redo_rate KB/Sec]
     ,hdr.redo_queue_size / hdr.redo_rate [DelaySeg]
 from sys.availability_replicas ar
     join sys.dm_hadr_database_replica_states hdr

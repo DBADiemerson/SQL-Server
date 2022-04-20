@@ -9,17 +9,3 @@ WHERE A.session_id > 50
 --and (user_objects_alloc_page_count + internal_objects_alloc_page_count)*1.0/128 > 100 -- Ocupam mais de 100 MB
 ORDER BY totalalocadoMB desc
 --COMPUTE sum((user_objects_alloc_page_count + internal_objects_alloc_page_count)*1.0/128)
-
-
-
-
-
-
-
-W3b.3iti
-
-https://1drv.ms/f/s!AgAUyiXQ8JmgitlWyB66W9ey5TgijA
-
-diemerson@mhnet.com.br
-cco52939
-cco52939@.

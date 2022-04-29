@@ -69,5 +69,3 @@ from msdb.dbo.sysjobs jb
 		on js.schedule_id = sc.schedule_id 
 
 GO
-
-

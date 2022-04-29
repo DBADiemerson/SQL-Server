@@ -1,4 +1,4 @@
-USE [DBA_HIST]
+USE [DBA]
 GO
 
 /****** Object:  Table [dbo].[dba_baseline_locks]    Script Date: 28/04/2022 15:28:17 ******/
@@ -82,7 +82,7 @@ begin
 		where blocked > 0 
 			and spid <> blocked
 	)
-	insert into dba_hist.dbo.dba_baseline_locks
+	insert into DBA.dbo.dba_baseline_locks
 	select 
 			getdate() [Timestamp],
 			sp.[dbid],
@@ -103,7 +103,7 @@ begin
 	from sys.sysprocesses sp
 		left join blkd 
 			on sp.spid = blkd.blocked
-		left join dba_hist.dbo.dba_baseline_locks dbl
+		left join DBA.dbo.dba_baseline_locks dbl
 			on sp.spid = dbl.spid
 				and sp.last_batch = dbl.last_batch
 	where (blkd.blocked is not null
@@ -138,5 +138,4 @@ QuitWithRollback:
     IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
 EndSave:
 GO
-
 

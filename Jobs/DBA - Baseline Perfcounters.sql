@@ -1,4 +1,4 @@
-USE [DBA_HIST]
+USE [DBA]
 GO
 
 /****** Object:  Table [dbo].[dba_baseline_perfcounters]    Script Date: 28/04/2022 17:19:44 ******/
@@ -105,7 +105,7 @@ $sqlcmd += "
         rollback
     end catch
 "
-invoke-sqlcmd -ServerInstance localhost -Database dba_hist -Query $sqlcmd -QueryTimeout 0
+invoke-sqlcmd -ServerInstance localhost -Database DBA -Query $sqlcmd -QueryTimeout 0
  
 ', 
 		@database_name=N'master', 
@@ -122,7 +122,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'SQL Base
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'insert into dba_hist.dbo.dba_baseline_perfcounters
+		@command=N'insert into DBA.dbo.dba_baseline_perfcounters
 select 
 	getdate()[Timestamp]
 	,*

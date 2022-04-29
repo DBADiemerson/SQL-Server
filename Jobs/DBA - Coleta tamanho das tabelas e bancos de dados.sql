@@ -1,4 +1,4 @@
-USE [DBA_HIST]
+USE [DBA]
 GO
 
 
@@ -74,7 +74,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Crescime
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'insert into dba_hist.dbo.dba_baseline_tamanho_tabelas
+		@command=N'insert into DBA.dbo.dba_baseline_tamanho_tabelas
 exec sp_msforeachdb ''
 use [?];
 
@@ -131,7 +131,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Crescime
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'TSQL', 
-		@command=N'insert into dba_hist.dbo.[dba_baseline_tamanho_databases]
+		@command=N'insert into DBA.dbo.[dba_baseline_tamanho_databases]
 exec sp_msforeachdb''
 use [?]
 
